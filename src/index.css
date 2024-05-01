@@ -12,10 +12,17 @@
   --darkB: #B3C8CF;
 } */
 
-:root {
+/* :root {
   --lightA: #F1EEDC;
   --lightB: #F3F8FF;
   --darkA: #E5DDC5;
+  --darkB: #DEECFF;
+} */
+
+:root {
+  --lightA: #FBF9F1;
+  --lightB: #F3F8FF;
+  --darkA: #E5E1DA;
   --darkB: #DEECFF;
 }
 

@@ -1,13 +1,13 @@
 [
   {
-    "title": "first title",
-    "text": "1Lorem Ipsum ...",
-    "author": "ben",
-    "publishYear": "2015",
-    "publishJournal": "ATMOS",
-    "doi": "10.20.2.asjdajf",
+    "title": "Evaluation of Istanbul Air Pollution in Combating COVID-19",
+    "text": "COVID-19 period changed daily-life such as precautions, restrictions and most importantly lockdowns in almost every country. Turkey has been one of the struggling countries especially the period after 15th of March, 2020. As many scientists from all over the world have been researching coronavirus’ medication, COVID-19’s possible relations have been also investigated. These relations are mostly focused on the respiratory system and immune system as well as human-to-human transmission. Air pollution is also known as a threatening factor for human life, furthermore China’s reduced air pollution is shown in the COPERNICUS Sentinel 5P and TERRA/MODIS AOD images during the lockdown process. In this study, it is aimed to analyze the air pollution in Istanbul while life in Turkey has almost stopped. Ministry of Environment and Urbanization’s PM10, PM2.5, NO2, CO, SO2 and O3 pollutant datasets are taken into consideration as two different periods which represent the time before the lockdown from Jan 1st to March 15th as first period and during the lockdown from March 16th to May 31st as second period for Istanbul is analyzed. These periods are also examined for the same dates in 2018 and 2019. Results are important to find out how air pollution has decreased in Istanbul during coronavirus lockdown period, especially 40% decrease of NO2 pollutant in contrast with 2018 and 2019 dataset for the same period of the year in 2020.",
+    "author": "Büşra Öztürk, İpek Çöl, Rahan Öztürk, Umur Dinç, Yiğitalp Kara, Zeynep Feriha Ünal",
+    "publishYear": "April 2021",
+    "publishJournal": "Alternative Energy and Ecology (ISJAEE)",
+    "doi": "10.15518/isjaee.2021.01.006",
     "imageSrc": "./PDF_file_icon.svg",
-    "link": "https://shorturl.at/zBK13"
+    "link": "https://www.researchgate.net/publication/351269459_Evaluation_of_Istanbul_Air_Pollution_in_Combating_COVID-19"
   },
   {
     "title": "second title",

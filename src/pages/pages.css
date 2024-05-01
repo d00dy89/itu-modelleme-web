@@ -395,6 +395,42 @@
   line-height: 1.6rem;
 }
 
+/*Papers section */
+.card {
+  border: 0.15rem solid #333;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 75%;
+  margin: 2rem auto;
+}
+
+.left-column {
+  flex: 0 0 75%;
+  text-align: justify;
+}
+
+.right-column {
+  flex: 0 0 15%;
+}
+
+.download-column {
+  flex: 0 0 10%;
+  display: flex;
+}
+
+.download-column a {
+  display: flex;
+  justify-content: center;
+}
+
+.download-column a img {
+  width: 75%;
+  height: auto;
+}
+
 /*Footer section */
 .footer-text {
   margin: 0;

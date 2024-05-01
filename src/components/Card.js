@@ -18,7 +18,7 @@ export default function Card({ children, title, text, author, publishYear, publi
       </div>
       <div className="download-column">
         <a href={link} target="_black" rel="noopener noreferrer">
-          <img src={PDFIcon} alt={title} style={{ width: "100%", height: "auto" }} />
+          <img src={PDFIcon} alt={title} />
         </a>
       </div>
     </div>
