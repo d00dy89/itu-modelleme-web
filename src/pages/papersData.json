@@ -1,0 +1,22 @@
+[
+  {
+    "title": "first title",
+    "text": "1Lorem Ipsum ...",
+    "author": "ben",
+    "publishYear": "2015",
+    "publishJournal": "ATMOS",
+    "doi": "10.20.2.asjdajf",
+    "imageSrc": "./PDF_file_icon.svg",
+    "link": "https://shorturl.at/zBK13"
+  },
+  {
+    "title": "second title",
+    "text": "2Lorem Ipsum ...",
+    "author": "ben",
+    "publishYear": "2015",
+    "publishJournal": "ATMOS",
+    "doi": "10.20.2.asjdajf",
+    "imageSrc": "./PDF_file_icon.svg",
+    "link": "https://shorturl.at/zBK13"
+  }
+]
