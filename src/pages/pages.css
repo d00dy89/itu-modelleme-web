@@ -432,8 +432,11 @@
 }
 
 /*Footer section */
-.footer-text {
-  margin: 0;
+.footer {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  height: 2rem;
 }
 
 @media screen and (max-width: 1024px) {
