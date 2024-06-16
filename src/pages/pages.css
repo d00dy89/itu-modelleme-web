@@ -16,7 +16,6 @@
   background-position: center;
   background-repeat: no-repeat;
   height: 50vh;
-  /* width: 100%; */
 }
 
 .home > header h1 {
@@ -110,7 +109,7 @@
   padding: 0rem 1.5rem 0rem 1.5rem;
 }
 
-/*Join Us section */
+/* Join Us section */
 .home-card-container {
   display: flex;
   gap: 2rem;
@@ -151,7 +150,7 @@
   font-weight: 900;
 }
 
-/*Join Us section */
+/* Join Us section */
 .join-us {
   column-gap: 8rem;
   display: flex;
@@ -229,7 +228,7 @@
   background-color: var(--darkA);
 }
 
-/*FORECAST PAGE */
+/* FORECAST PAGE */
 .forecast-page {
   width: 100%;
   background-color: var(--lightB);
@@ -244,14 +243,70 @@
 
 .forecast-options-panel {
   flex: 0 0 15%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
   background-color: var(--lightA);
   padding: 1rem;
   margin-right: 1rem;
-  margin-left: 1rem;
 }
 
 .forecast-options-panel button {
-  display: block;
+  width: calc(100% - 1rem); /* Fixed button width to fit within the panel */
+  padding: 0.75rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: var(--darkA);
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.forecast-options-panel button:hover {
+  background-color: var(--darkB);
+  transform: translateY(-2px);
+}
+
+.forecast-image-container {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 75%;
+}
+
+.forecast-image-holder {
+  position: relative;
+}
+
+.forecast-image-holder img {
+  width: 100%;
+  height: auto;
+  max-height: 100vh;
+}
+
+.forecast-slider-holder {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.forecast-slider-holder input[type="range"] {
+  width: 100%;
+}
+
+.forecast-domain-panel {
+  flex: 0 0 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--lightA);
+  padding: 1rem;
+  margin-left: 1rem;
+}
+
+.forecast-domain-panel button {
   width: 100%;
   padding: 1.5rem;
   margin-bottom: 1rem;
@@ -264,44 +319,10 @@
   transition: background-color 0.3s, transform 0.3s;
 }
 
-.forecast-options-panel button:hover {
+.forecast-domain-panel button:hover {
   background-color: var(--darkB);
   transform: translateY(-2px);
 }
-
-.forecast-image-holder {
-  flex: 0 0 60%;
-  position: relative;
-}
-
-.forecast-image-holder img {
-  width: 100%;
-  height: auto;
-  max-height: 100vh;
-}
-
-.forecast-image-holder input[type="range"] {
-  position: absolute;
-  width: 100%;
-  bottom: 10px;
-  left: 0;
-}
-
-.forecast-about-container {
-  background-color: var(--darkA);
-  padding: 2rem;
-}
-
-.forecast-about-container h2 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
-.forecast-about-container p {
-  font-size: 1.1rem;
-  line-height: 1.6rem;
-}
-
 
 /* ANALYSIS PAGE */
 .analysis-page {
@@ -395,7 +416,7 @@
   line-height: 1.6rem;
 }
 
-/*Papers section */
+/* Papers section */
 .card {
   border: 0.15rem solid #333;
   border-radius: 1rem;
@@ -431,7 +452,7 @@
   height: auto;
 }
 
-/*Footer section */
+/* Footer section */
 .footer {
   background-color: #000;
   color: #fff;
@@ -440,5 +461,5 @@
 }
 
 @media screen and (max-width: 1024px) {
-  
+
 }

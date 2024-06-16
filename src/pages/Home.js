@@ -39,7 +39,7 @@ const QUALIFICATIONS = [
 function LinkCard({ title, text, icon = "routine" }) {
   return (
     <div className="link-card">
-      <span class="material-symbols-outlined">{icon}</span>
+      <span className="material-symbols-outlined">{icon}</span>
       <div>
         <h2>{title}</h2>
         <p>{text}</p>
@@ -62,28 +62,68 @@ function Panel({ imageUrl, altText, labelText, linkUrl }) {
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [imageUrls, setImageUrls] = useState({ temp2m: "", precip: "", wind10m: "" });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setCurrentTime(
-        new Date()
-          .toLocaleString("en-GB", { timeZone: "Europe/Istanbul" })
-          .replace(/\//g, "-")
-      );
+      setCurrentTime(new Date().toLocaleString("en-GB", { timeZone: "Europe/Istanbul" }).replace(/\//g, "-"));
     }, 1000);
 
     return () => clearInterval(intervalId);
   }, []);
 
-  const currentDate = new Date();
-  let currentHour = currentDate.getHours();
-  if (currentHour > 21 || (currentHour === 21 && currentDate.getMinutes() >= 30)) {
-    currentDate.setDate(currentDate.getDate() + 1);
-    currentHour = 0;
-  } else {
-    currentHour = Math.floor(currentHour / 3) * 3;
-  }
-  const formattedDate = currentDate.toISOString().slice(0, 10).replace(/-/g, '') + currentHour.toString().padStart(2, '0');
+  useEffect(() => {
+    const generateImageFilenames = () => {
+      const todayInitTime = new Date();
+      todayInitTime.setUTCHours(0, 0, 0, 0);
+
+      const filenames = [];
+      for (let i = 0; i < 25; i++) {
+        const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000); // Increment by 3 hours
+        const hours = time.getUTCHours().toString().padStart(2, '0');
+        filenames.push({
+          temp2m: `2mtemp_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          precip: `total_precip_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          wind10m: `10mwind_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          timestamp: time.toISOString(),
+        });
+      }
+      return filenames;
+    };
+
+    const findClosestTimestamp = (currentTime, filenames) => {
+      const currentTimeMs = new Date(currentTime).getTime();
+      let closest = filenames[0];
+      let minDiff = Math.abs(currentTimeMs - new Date(filenames[0].timestamp).getTime());
+
+      for (let i = 1; i < filenames.length; i++) {
+        const diff = Math.abs(currentTimeMs - new Date(filenames[i].timestamp).getTime());
+        if (diff < minDiff) {
+          closest = filenames[i];
+          minDiff = diff;
+        }
+      }
+
+      return {
+        temp2m: closest.temp2m.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png'),
+        precip: closest.precip.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png'),
+        wind10m: closest.wind10m.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png')
+      };
+    };
+
+    const updateImageUrls = () => {
+      const filenames = generateImageFilenames();
+      const closestFilename = findClosestTimestamp(currentTime, filenames);
+
+      setImageUrls({
+        temp2m: `/images/wrf_output_maps/d01/2mtemp/${closestFilename.temp2m}`,
+        precip: `/images/wrf_output_maps/d01/total_precip/${closestFilename.precip}`,
+        wind10m: `/images/wrf_output_maps/d01/10mwind/${closestFilename.wind10m}`,
+      });
+    };
+
+    updateImageUrls();
+  }, [currentTime]);
 
   return (
     <div className="page home">
@@ -110,16 +150,22 @@ export default function Home() {
         <h2 className="quick-access-header">QUICK ACCESS</h2>
         <div className="panel-container">
           <Panel
-            imageUrl={`/images/temp2m/temp2m_${formattedDate}.jpg`}
+            imageUrl={imageUrls.temp2m}
             altText="2m Temperature"
             labelText="2m Temperature"
             linkUrl="https://www.modelleme.itu.edu.tr/sicaklik.html"
           />
           <Panel
-            imageUrl={`/images/precip/precip_${formattedDate}.jpg`}
+            imageUrl={imageUrls.precip}
             altText="Precipitation"
             labelText="Precipitation"
             linkUrl="https://www.modelleme.itu.edu.tr/yagis.html"
+          />
+          <Panel
+            imageUrl={imageUrls.wind10m}
+            altText="10m Wind Speed"
+            labelText="10m Wind Speed"
+            linkUrl="https://www.modelleme.itu.edu.tr/yukseklik.html"
           />
           <Panel
             imageUrl="/images/era5.png"
@@ -128,22 +174,16 @@ export default function Home() {
             linkUrl="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels"
           />
           <Panel
-            imageUrl="/images/wind10m.png"
-            altText="10m Wind Speed"
-            labelText="10m Wind Speed"
-            linkUrl="https://www.modelleme.itu.edu.tr/yukseklik.html"
-          />
-          <Panel
             imageUrl="https://www.mgm.gov.tr/FTPDATA/uzal/radar/comp/compppi15.jpg"
-            altText="Snow"
+            altText="Latest Radar"
             labelText="Latest Radar"
             linkUrl="https://www.mgm.gov.tr/sondurum/radar.aspx?rG=img&rR=00&rU=vil#sfB"
           />
           <Panel
-            imageUrl="/images/snow.png"
-            altText="Snow"
-            labelText="Snow"
-            linkUrl="https://www.modelleme.itu.edu.tr/bulut.html"
+            imageUrl="https://eumetview.eumetsat.int/static-images/latestImages/EUMETSAT_MSG_RGBNatColourEnhncd_EasternEurope.jpg"
+            altText="Latest Satellite"
+            labelText="Latest Satellite"
+            linkUrl="https://eumetview.eumetsat.int/static-images/latestImages.html"
           />
         </div>
       </div>
@@ -169,25 +209,19 @@ export default function Home() {
           </p>
           <div className="home-card-container">
             <LinkCard
-              title={"Forecast"}
-              icon={"routine"}
-              text={
-                "Check out our daily WRF model outputs for Turkey's weather. See the forecasted precipitation patterns and stay informed about the upcoming weather conditions."
-              }
+              title="Forecast"
+              icon="routine"
+              text="Check out our daily WRF model outputs for Turkey's weather. See the forecasted precipitation patterns and stay informed about the upcoming weather conditions."
             />
             <LinkCard
-              title={"Analysis"}
-              icon={"science"}
-              text={
-                "Explore our visualizations of historical ERA5 analysis results. Check out the data on this page for insights into past weather patterns."
-              }
+              title="Analysis"
+              icon="science"
+              text="Explore our visualizations of historical ERA5 analysis results. Check out the data on this page for insights into past weather patterns."
             />
             <LinkCard
-              title={"Papers"}
-              icon={"article"}
-              text={
-                "You can browse through the research articles we have published."
-              }
+              title="Papers"
+              icon="article"
+              text="You can browse through the research articles we have published."
             />
           </div>
         </div>
@@ -197,7 +231,7 @@ export default function Home() {
       <section className="join-us">
         <div>
           {QUALIFICATIONS.map(({ icon, title, text }) => (
-            <div className="qualification">
+            <div className="qualification" key={title}>
               <span className="material-symbols-outlined">{icon}</span>
               <div>
                 <h3>{title}</h3>
