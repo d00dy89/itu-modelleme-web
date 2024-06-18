@@ -5,34 +5,29 @@ import "./pages.css";
 
 const QUALIFICATIONS = [
   {
-    icon: "groups",
-    title: "Team Work",
-    text: "If you're all about that teamwork vibe and love diving into a collective pool of knowledge",
+    icon: "air",
+    title: "Weather Wizards",
+    text: "A basic understanding of meteorology is essential. Know your isobars from your isotopes? Can you predict tech trends like weather patterns? Join us and let’s explore the climate of innovation together!",
   },
   {
     icon: "computer",
-    title: "Computer Skills",
-    text: "If you're a wizard with programming languages like Python, Fortran, or cool with software like R, or even keen to learn",
+    title: "Research Radar",
+    text: "We need sharp-eyed researchers who can scan the horizon for new information like a Doppler radar detecting an approaching storm. Be ready to dive deep and unearth valuable insights from the data deluge.",
   },
   {
     icon: "analytics",
-    title: "Analytical Thinking",
-    text: "If you're all about seeing things from different angles and trust your analysis skills",
+    title: "IAtmospheric Architects",
+    text: "Are you ready to invent new ways to chase the technological tornadoes? If you have a knack for brainstorming in the brainstorm, you might just be what we're looking for!",
   },
   {
-    icon: "search",
-    title: "Spirit of Inquiry",
-    text: "If you're curious and get excited about every new piece of knowledge you acquire",
+    icon: "cloud_upload",
+    title: "Cloud Network Engineer",
+    text: "Eager to manage the “clouds” of our web servers? Whether it's cumulus or cirrus, we need enthusiasts ready to handle any server weather, sunny or stormy!",
   },
   {
-    icon: "air",
-    title: "Meteorology Knowledge",
-    text: "If you're studying meteorological engineering and love analyzing current atmospheric events",
-  },
-  {
-    icon: "tornado",
-    title: "Atmospheric Model Knowledge",
-    text: "If you're curious about the working principles of numerical weather prediction models",
+    icon: "groups",
+    title: "Synergy Storm",
+    text: "Ready to whirl into a life of teamwork and friendship? We’re looking for members who can stick together through high pressures and low, creating a vortex of collaboration and camaraderie.",
   },
 ];
 
@@ -241,10 +236,10 @@ export default function Home() {
           ))}
         </div>
         <div className="action">
-          <h2>Join Us</h2>
+          <h2>Catch the Lodos Wind!</h2>
           <p>
-            If you possess the qualities listed on the side, send us an email
-            introducing yourself and including a motivation letter to join us!
+          Click this button if you're ready to soar into a world of innovation, teamwork, and meteorological mastery.
+          Don’t let this opportunity evaporate—become a force of nature with us today!
           </p>
           <a href="https://asd.com" className="join-button">
             Join Us
