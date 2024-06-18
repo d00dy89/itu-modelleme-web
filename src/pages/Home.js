@@ -79,7 +79,7 @@ export default function Home() {
 
       const filenames = [];
       for (let i = 0; i < 25; i++) {
-        const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000); // Increment by 3 hours
+        const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000);
         const hours = time.getUTCHours().toString().padStart(2, '0');
         filenames.push({
           temp2m: `2mtemp_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
