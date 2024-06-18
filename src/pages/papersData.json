@@ -2,7 +2,7 @@
   {
     "title": "Evaluation of Istanbul Air Pollution in Combating COVID-19",
     "text": "COVID-19 period changed daily-life such as precautions, restrictions and most importantly lockdowns in almost every country. Turkey has been one of the struggling countries especially the period after 15th of March, 2020. As many scientists from all over the world have been researching coronavirus’ medication, COVID-19’s possible relations have been also investigated. These relations are mostly focused on the respiratory system and immune system as well as human-to-human transmission. Air pollution is also known as a threatening factor for human life, furthermore China’s reduced air pollution is shown in the COPERNICUS Sentinel 5P and TERRA/MODIS AOD images during the lockdown process. In this study, it is aimed to analyze the air pollution in Istanbul while life in Turkey has almost stopped. Ministry of Environment and Urbanization’s PM10, PM2.5, NO2, CO, SO2 and O3 pollutant datasets are taken into consideration as two different periods which represent the time before the lockdown from Jan 1st to March 15th as first period and during the lockdown from March 16th to May 31st as second period for Istanbul is analyzed. These periods are also examined for the same dates in 2018 and 2019. Results are important to find out how air pollution has decreased in Istanbul during coronavirus lockdown period, especially 40% decrease of NO2 pollutant in contrast with 2018 and 2019 dataset for the same period of the year in 2020.",
-    "author": "Büşra Öztürk, İpek Çöl, Rahan Öztürk, Umur Dinç, Yiğitalp Kara, Zeynep Feriha Ünal",
+    "author": "Büşra Öztürk, İpek Çöl, Rahan Öztürk, Umur Dinç, Yiğitalp Kara, Zeynep Feriha Ünal, Aydın Ulubey",
     "publishYear": "April 2021",
     "publishJournal": "Alternative Energy and Ecology (ISJAEE)",
     "doi": "10.15518/isjaee.2021.01.006",
@@ -10,13 +10,13 @@
     "link": "https://www.researchgate.net/publication/351269459_Evaluation_of_Istanbul_Air_Pollution_in_Combating_COVID-19"
   },
   {
-    "title": "second title",
-    "text": "2Lorem Ipsum ...",
-    "author": "ben",
-    "publishYear": "2015",
-    "publishJournal": "ATMOS",
-    "doi": "10.20.2.asjdajf",
+    "title": "Lockdown effects on air pollution with meteorological conditions in Istanbul",
+    "text": "The most affected regions by the COVID-19 outbreak are megacities. One of the most important environmental problems in these cities is air pollution. During the lockdown period, an improvement in air quality was observed in many metropolitan cities based on air pollutants. In this study, Istanbul province was chosen due to its demographic structure. In Turkey, many precautions such as lockdowns have been implemented against COVID-19 starting from March 15, 2020. As these measures change people's lifestyles and habits, anthropogenic emissions are expected to reduce. In previous studies, the relationships between air pollution and meteorological variables such as wind speed and direction, pressure and humidity have been proved. Therefore, in this study, it was decided to examine the meteorological variables mentioned above and air pollutants together. In the studied period, Controlled lockdowns were imposed intermittently in 1/3 of April. The comparison of air pollutant values belonging to lockdown and nonlockdown days were examined in consideration of the meteorological variables. PM10, CO, NO2, SO2 and O3 pollutant datasets taken from Ministry of Environment and Urbanization for several points in Istanbul and meteorological charts for the same dates taken from various sources were evaluated.",
+    "author": "Zeynep Feriha Ünal, Yiğitalp Kara, Umur Dinç, Rahan Öztürk, İpek Çöl, Büşra Öztürk, Hüseyin Toros, Aydın Ulubey",
+    "publishYear": "April 2021",
+    "publishJournal": "Alternative Energy and Ecology (ISJAEE)",
+    "doi": "10.15518/isjaee.2021.01.005",
     "imageSrc": "./PDF_file_icon.svg",
-    "link": "https://shorturl.at/zBK13"
+    "link": "https://www.researchgate.net/publication/351413137_Lockdown_effects_on_air_pollution_with_meteorological_conditions_in_Istanbul"
   }
 ]

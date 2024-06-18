@@ -16,7 +16,7 @@ const QUALIFICATIONS = [
   },
   {
     icon: "analytics",
-    title: "IAtmospheric Architects",
+    title: "Atmospheric Architects",
     text: "Are you ready to invent new ways to chase the technological tornadoes? If you have a knack for brainstorming in the brainstorm, you might just be what we're looking for!",
   },
   {

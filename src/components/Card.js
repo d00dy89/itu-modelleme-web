@@ -12,8 +12,8 @@ export default function Card({ children, title, text, author, publishYear, publi
       <div className="right-column">
         <h4>Identity Information</h4>
         <p>Author: {author}</p>
-        <p>Publish Year: {publishYear}</p>
-        <p>Publish Journal: {publishJournal}</p>
+        <p>Published: {publishYear}</p>
+        <p>Journal: {publishJournal}</p>
         <p>DOI: {doi}</p>
       </div>
       <div className="download-column">

@@ -90,10 +90,14 @@ export default function Forecast() {
       <section className="forecast-about-container">
         <h2>About WRF Model</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere ipsum vitae felis consectetur, sit amet elementum urna dapibus. Vivamus nec risus non purus fermentum lacinia.
+        The Weather Research and Forecasting (WRF) model is a highly advanced mesoscale numerical weather prediction system designed to
+        serve both atmospheric research and operational forecasting needs.
+        It features multiple dynamical cores, a versatile data assimilation system, and a software architecture allowing
+        for parallel computation and system extensibility.
         </p>
         <p>
-          Integer nec tortor non purus viverra faucibus. Sed nec risus eget nunc placerat volutpat. Vivamus consequat, justo non vehicula consequat, purus libero lacinia nunc, nec placerat justo lorem vel mauris.
+        We are utilizing the WRF model in conjunction with the Global Forecast System (GFS) initial and boundary conditions (ICBC),
+        updating our simulations with every 0Z GFS model run to ensure the highest accuracy and timeliness in our weather predictions.
         </p>
       </section>
     </div>

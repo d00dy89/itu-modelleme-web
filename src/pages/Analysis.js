@@ -118,10 +118,16 @@ export default function Analysis() {
       <section className="analysis-about-container">
         <h2>About ERA5 Model</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla posuere ipsum vitae felis consectetur, sit amet elementum urna dapibus. Vivamus nec risus non purus fermentum lacinia.
+          ERA5 is the fifth generation of the European Centre for Medium-Range Weather Forecasts (ECMWF)
+          atmospheric reanalyses of the global climate. It provides hourly estimates of a vast array of atmospheric,
+          land, and oceanic climate variables, spanning from 1950 to the near present.
+          These reanalyses combine model data with observations from across the world into a globally complete and consistent dataset. 
         </p>
         <p>
-          Integer nec tortor non purus viverra faucibus. Sed nec risus eget nunc placerat volutpat. Vivamus consequat, justo non vehicula consequat, purus libero lacinia nunc, nec placerat justo lorem vel mauris.
+          We are using ERA5 data for every 0, 6, 12, and 18 Z runs,
+          which we then visualize to assist students in understanding and analyzing past weather and climate events.
+          This approach provides a comprehensive tool for educational purposes, 
+          enabling detailed study and retrospective analysis of complex atmospheric phenomena.
         </p>
       </section>
     </div>
