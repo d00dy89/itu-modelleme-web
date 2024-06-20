@@ -77,9 +77,9 @@ export default function Home() {
         const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000);
         const hours = time.getUTCHours().toString().padStart(2, '0');
         filenames.push({
-          temp2m: `2mtemp_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          temp2m: `t2m_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           precip: `total_precip_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
-          wind10m: `10mwind_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          wind10m: `wind10_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           timestamp: time.toISOString(),
         });
       }
@@ -111,9 +111,9 @@ export default function Home() {
       const closestFilename = findClosestTimestamp(currentTime, filenames);
 
       setImageUrls({
-        temp2m: `/images/wrf_output_maps/d01/2mtemp/${closestFilename.temp2m}`,
+        temp2m: `/images/wrf_output_maps/d01/t2m/${closestFilename.temp2m}`,
         precip: `/images/wrf_output_maps/d01/total_precip/${closestFilename.precip}`,
-        wind10m: `/images/wrf_output_maps/d01/10mwind/${closestFilename.wind10m}`,
+        wind10m: `/images/wrf_output_maps/d01/wind10/${closestFilename.wind10m}`,
       });
     };
 

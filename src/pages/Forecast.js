@@ -17,6 +17,10 @@ export default function Forecast() {
 
   const graphTypes = {
     d01: [
+      { value: "t2m", label: "2m Temperature" },
+      { value: "wind10", label: "10m Wind Speed" },
+      { value: "jet300", label: "300 hPa Jet Streams" },
+      { value: "t2_depression", label: "2m Temperature Depression" },
       { value: "avo_adv500", label: "500 hPa Absolute Vorticity Advection" },
       { value: "eth850", label: "850 hPa Equivalent Temperature" },
       { value: "pwat", label: "Precipitable Water" },
@@ -24,17 +28,23 @@ export default function Forecast() {
       { value: "rvo300", label: "300 hPa Relative Vorticity" },
       { value: "rvo500", label: "500 hPa Relative Vorticity" },
       { value: "tempadv850", label: "850 hPa Temperature Advection" },
-      { value: "temphgt500", label: "500 hPa Temperature" },
+      { value: "temphgt500", label: "500 hPa Geopotential Height & Temperature" },
       { value: "temphgt850", label: "850 hPa Temperature" },
       { value: "total_precip", label: "Total Precipitation" },
       { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
     ],
     d02: [
+      { value: "t2m", label: "2m Temperature" },
+      { value: "wind10", label: "10m Wind Speed" },
+      { value: "t2_depression", label: "2m Temperature Depression" },
       { value: "pwat", label: "Precipitable Water" },
       { value: "rh700", label: "700 hPa Relative Humidity" },
       { value: "rvo300", label: "300 hPa Relative Vorticity" },
       { value: "rvo500", label: "500 hPa Relative Vorticity" },
+      { value: "tempadv850", label: "850 hPa Temperature Advection" },
       { value: "temphgt850", label: "850 hPa Temperature" },
+      { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
+      { value: "total_precip", label: "Total Precipitation" },
       { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
     ]
   };
