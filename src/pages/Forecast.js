@@ -9,11 +9,11 @@ const generateImageLinks = (baseFolder, domain, range) => {
 };
 
 export default function Forecast() {
-  const [activeGraph, setActiveGraph] = useState("pwat");
+  const [activeGraph, setActiveGraph] = useState("t2m");
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedDomain, setSelectedDomain] = useState("d01");
   const [range, setRange] = useState(24);
-  const [imageLinks, setImageLinks] = useState(generateImageLinks("pwat", "d01", 24));
+  const [imageLinks, setImageLinks] = useState(generateImageLinks("t2m", "d01", 24));
 
   const graphTypes = {
     d01: [
@@ -31,6 +31,7 @@ export default function Forecast() {
       { value: "temphgt500", label: "500 hPa Geopotential Height & Temperature" },
       { value: "temphgt850", label: "850 hPa Temperature" },
       { value: "total_precip", label: "Total Precipitation" },
+      { value: "hourly_precip", label: "Hourly Precipitation" },
       { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
     ],
     d02: [
@@ -45,6 +46,7 @@ export default function Forecast() {
       { value: "temphgt850", label: "850 hPa Temperature" },
       { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
       { value: "total_precip", label: "Total Precipitation" },
+      { value: "hourly_precip", label: "Hourly Precipitation" },
       { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
     ]
   };
