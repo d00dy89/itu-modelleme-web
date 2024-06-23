@@ -297,7 +297,7 @@
 }
 
 .forecast-domain-panel {
-  flex: 0 0 10%;
+  flex: 0 0 9%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

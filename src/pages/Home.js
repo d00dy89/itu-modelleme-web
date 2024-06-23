@@ -98,11 +98,15 @@ export default function Home() {
           minDiff = diff;
         }
       }
-    
+
+      const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.png';
+      const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.png';
+      const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.png';
+
       return {
-        temp2m: `/images/wrf_output_maps/d01/t2m/${closest.temp2m.split('_').slice(0, 2).join('_')}.png`,
-        precip: `/images/wrf_output_maps/d01/hourly_precip/${closest.precip.split('_').slice(0, 2).join('_')}.png`,
-        wind10m: `/images/wrf_output_maps/d01/wind10/${closest.wind10m.split('_').slice(0, 2).join('_')}.png`,
+        temp2m: `/images/wrf_output_maps/d01/t2m/${temp2mFilename}`,
+        precip: `/images/wrf_output_maps/d01/hourly_precip/${precipFilename}`,
+        wind10m: `/images/wrf_output_maps/d01/wind10/${wind10mFilename}`,
       };
     };
 
