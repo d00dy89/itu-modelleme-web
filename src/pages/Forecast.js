@@ -1,5 +1,43 @@
 import React, { useState } from "react";
 
+const graphTypes = {
+  d01: [
+    { value: "t2m", label: "2m Temperature" },
+    { value: "wind10", label: "10m Wind Speed" },
+    { value: "jet300", label: "300 hPa Jet Streams" },
+    { value: "t2_depression", label: "2m Temperature Depression" },
+    { value: "avo_adv500", label: "500 hPa Absolute Vorticity Advection" },
+    { value: "eth850", label: "850 hPa Equivalent Temperature" },
+    { value: "pwat", label: "Precipitable Water" },
+    { value: "rh700", label: "700 hPa Relative Humidity" },
+    { value: "rvo300", label: "300 hPa Relative Vorticity" },
+    { value: "rvo500", label: "500 hPa Relative Vorticity" },
+    { value: "sst", label: "Sea Surface Temperature" },
+    { value: "tempadv850", label: "850 hPa Temperature Advection" },
+    { value: "temphgt500", label: "500 hPa Geopotential Height & Temperature" },
+    { value: "temphgt850", label: "850 hPa Temperature" },
+    { value: "total_precip", label: "Total Precipitation" },
+    { value: "tsk", label: "Skin Temperature" },
+    { value: "hourly_precip", label: "Hourly Precipitation" },
+    { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
+  ],
+  d02: [
+    { value: "t2m", label: "2m Temperature" },
+    { value: "wind10", label: "10m Wind Speed" },
+    { value: "t2_depression", label: "2m Temperature Depression" },
+    { value: "pwat", label: "Precipitable Water" },
+    { value: "rh700", label: "700 hPa Relative Humidity" },
+    { value: "rvo300", label: "300 hPa Relative Vorticity" },
+    { value: "rvo500", label: "500 hPa Relative Vorticity" },
+    { value: "tempadv850", label: "850 hPa Temperature Advection" },
+    { value: "temphgt850", label: "850 hPa Temperature" },
+    { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
+    { value: "total_precip", label: "Total Precipitation" },
+    { value: "tsk", label: "Skin Temperature" },
+    { value: "hourly_precip", label: "Hourly Precipitation" },
+  ]
+};
+
 const generateImageLinks = (baseFolder, domain, range) => {
   const links = [];
   for (let i = 0; i <= range; i++) {
@@ -14,42 +52,7 @@ export default function Forecast() {
   const [selectedDomain, setSelectedDomain] = useState("d01");
   const [range, setRange] = useState(24);
   const [imageLinks, setImageLinks] = useState(generateImageLinks("t2m", "d01", 24));
-
-  const graphTypes = {
-    d01: [
-      { value: "t2m", label: "2m Temperature" },
-      { value: "wind10", label: "10m Wind Speed" },
-      { value: "jet300", label: "300 hPa Jet Streams" },
-      { value: "t2_depression", label: "2m Temperature Depression" },
-      { value: "avo_adv500", label: "500 hPa Absolute Vorticity Advection" },
-      { value: "eth850", label: "850 hPa Equivalent Temperature" },
-      { value: "pwat", label: "Precipitable Water" },
-      { value: "rh700", label: "700 hPa Relative Humidity" },
-      { value: "rvo300", label: "300 hPa Relative Vorticity" },
-      { value: "rvo500", label: "500 hPa Relative Vorticity" },
-      { value: "tempadv850", label: "850 hPa Temperature Advection" },
-      { value: "temphgt500", label: "500 hPa Geopotential Height & Temperature" },
-      { value: "temphgt850", label: "850 hPa Temperature" },
-      { value: "total_precip", label: "Total Precipitation" },
-      { value: "hourly_precip", label: "Hourly Precipitation" },
-      { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
-    ],
-    d02: [
-      { value: "t2m", label: "2m Temperature" },
-      { value: "wind10", label: "10m Wind Speed" },
-      { value: "t2_depression", label: "2m Temperature Depression" },
-      { value: "pwat", label: "Precipitable Water" },
-      { value: "rh700", label: "700 hPa Relative Humidity" },
-      { value: "rvo300", label: "300 hPa Relative Vorticity" },
-      { value: "rvo500", label: "500 hPa Relative Vorticity" },
-      { value: "tempadv850", label: "850 hPa Temperature Advection" },
-      { value: "temphgt850", label: "850 hPa Temperature" },
-      { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
-      { value: "total_precip", label: "Total Precipitation" },
-      { value: "hourly_precip", label: "Hourly Precipitation" },
-      { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
-    ]
-  };
+  const [graphTypesState, setGraphTypes] = useState(graphTypes["d01"]);
 
   const handleChangeGraph = (graphType) => {
     setActiveGraph(graphType);
@@ -67,6 +70,7 @@ export default function Forecast() {
     setRange(newRange);
     setImageLinks(generateImageLinks(activeGraph, domain, newRange));
     setSelectedImageIndex(0);
+    setGraphTypes([...graphTypes[domain]]); // Reset graph types with a new copy
   };
 
   return (
@@ -74,7 +78,7 @@ export default function Forecast() {
       <h1>Forecast</h1>
       <section className="forecast-section">
         <div className="forecast-options-panel">
-          {graphTypes[selectedDomain].map((graph) => (
+          {graphTypesState.map((graph) => (
             <button key={graph.value} onClick={() => handleChangeGraph(graph.value)}>
               {graph.label}
             </button>

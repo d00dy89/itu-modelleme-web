@@ -78,7 +78,7 @@ export default function Home() {
         const hours = time.getUTCHours().toString().padStart(2, '0');
         filenames.push({
           temp2m: `t2m_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
-          precip: `total_precip_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          precip: `hourly_precip_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           wind10m: `wind10_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           timestamp: time.toISOString(),
         });
@@ -86,39 +86,31 @@ export default function Home() {
       return filenames;
     };
 
-    const findClosestTimestamp = (currentTime, filenames) => {
-      const currentTimeMs = new Date(currentTime).getTime();
+    const findClosestTimestamp = (initialTime, filenames) => {
+      const initialTimeMs = new Date(initialTime).getTime();
       let closest = filenames[0];
-      let minDiff = Math.abs(currentTimeMs - new Date(filenames[0].timestamp).getTime());
-
+      let minDiff = Math.abs(initialTimeMs - new Date(filenames[0].timestamp).getTime());
+    
       for (let i = 1; i < filenames.length; i++) {
-        const diff = Math.abs(currentTimeMs - new Date(filenames[i].timestamp).getTime());
+        const diff = Math.abs(initialTimeMs - new Date(filenames[i].timestamp).getTime());
         if (diff < minDiff) {
           closest = filenames[i];
           minDiff = diff;
         }
       }
-
+    
       return {
-        temp2m: closest.temp2m.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png'),
-        precip: closest.precip.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png'),
-        wind10m: closest.wind10m.replace(/_\d{4}-\d{2}-\d{2}T\d{6}Z\.jpg$/, '.png')
+        temp2m: `/images/wrf_output_maps/d01/t2m/${closest.temp2m.split('_').slice(0, 2).join('_')}.png`,
+        precip: `/images/wrf_output_maps/d01/hourly_precip/${closest.precip.split('_').slice(0, 2).join('_')}.png`,
+        wind10m: `/images/wrf_output_maps/d01/wind10/${closest.wind10m.split('_').slice(0, 2).join('_')}.png`,
       };
     };
 
-    const updateImageUrls = () => {
-      const filenames = generateImageFilenames();
-      const closestFilename = findClosestTimestamp(currentTime, filenames);
-
-      setImageUrls({
-        temp2m: `/images/wrf_output_maps/d01/t2m/${closestFilename.temp2m}`,
-        precip: `/images/wrf_output_maps/d01/total_precip/${closestFilename.precip}`,
-        wind10m: `/images/wrf_output_maps/d01/wind10/${closestFilename.wind10m}`,
-      });
-    };
-
-    updateImageUrls();
-  }, [currentTime]);
+    const initialTime = new Date();
+    const filenames = generateImageFilenames();
+    const closestImageUrls = findClosestTimestamp(initialTime, filenames);
+    setImageUrls(closestImageUrls);
+  }, []);
 
   return (
     <div className="page home">
