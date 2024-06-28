@@ -110,6 +110,19 @@
   padding: 0rem 1.5rem 0rem 1.5rem;
 }
 
+.view-page-link {
+  font-size: 2rem;
+  font-weight: 750;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.view-page-link:hover {
+  color: var(--lightB);
+}
+
 /* Join Us section */
 .home-card-container {
   display: flex;

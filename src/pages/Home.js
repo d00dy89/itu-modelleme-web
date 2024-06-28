@@ -31,7 +31,7 @@ const QUALIFICATIONS = [
   },
 ];
 
-function LinkCard({ title, text, icon = "routine" }) {
+function LinkCard({ title, text, icon = "routine", linkUrl }) {
   return (
     <div className="link-card">
       <span className="material-symbols-outlined">{icon}</span>
@@ -39,7 +39,7 @@ function LinkCard({ title, text, icon = "routine" }) {
         <h2>{title}</h2>
         <p>{text}</p>
       </div>
-      <span>VIEW PAGE</span>
+      <a href={linkUrl} className="view-page-link">VIEW PAGE</a>
     </div>
   );
 }
@@ -57,7 +57,7 @@ function Panel({ imageUrl, altText, labelText, linkUrl }) {
 
 export default function Home() {
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [imageUrls, setImageUrls] = useState({ temp2m: "", precip: "", wind10m: "" });
+  const [imageUrls, setImageUrls] = useState({ temp2m: "", precip: "", wind10m: "", dbz: "" });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -68,6 +68,14 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    // const generateImageFilenames = () => {
+    //   const currentDateTime = new Date();
+    //   const todayInitTime = new Date();
+
+    //   if (currentDateTime.getHours() < 10) {
+    //     todayInitTime.setDate(todayInitTime.getDate() - 1);
+    //   }
+    //   todayInitTime.setUTCHours(0, 0, 0, 0);
     const generateImageFilenames = () => {
       const todayInitTime = new Date();
       todayInitTime.setUTCHours(0, 0, 0, 0);
@@ -80,6 +88,7 @@ export default function Home() {
           temp2m: `t2m_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           precip: `hourly_precip_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           wind10m: `wind10_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
+          dbz: `dbz_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
           timestamp: time.toISOString(),
         });
       }
@@ -102,11 +111,13 @@ export default function Home() {
       const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.png';
       const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.png';
       const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.png';
+      const dbzFilename = closest.dbz.substring(0, closest.dbz.lastIndexOf('_')) + '.png';
 
       return {
         temp2m: `/images/wrf_output_maps/d01/t2m/${temp2mFilename}`,
         precip: `/images/wrf_output_maps/d01/hourly_precip/${precipFilename}`,
         wind10m: `/images/wrf_output_maps/d01/wind10/${wind10mFilename}`,
+        dbz: `/images/wrf_output_maps/d01/dbz/${dbzFilename}`,
       };
     };
 
@@ -138,31 +149,31 @@ export default function Home() {
       </div>
 
       <div className="quick-access-area">
-        <h2 className="quick-access-header">QUICK ACCESS</h2>
+        <h2 className="quick-access-header">QUICK LOOK</h2>
         <div className="panel-container">
           <Panel
             imageUrl={imageUrls.temp2m}
             altText="2m Temperature"
             labelText="2m Temperature"
-            linkUrl="https://www.modelleme.itu.edu.tr/sicaklik.html"
+            linkUrl="./Forecast"
           />
           <Panel
             imageUrl={imageUrls.precip}
             altText="Precipitation"
             labelText="Precipitation"
-            linkUrl="https://www.modelleme.itu.edu.tr/yagis.html"
+            linkUrl="./Forecast"
           />
           <Panel
             imageUrl={imageUrls.wind10m}
             altText="10m Wind Speed"
             labelText="10m Wind Speed"
-            linkUrl="https://www.modelleme.itu.edu.tr/yukseklik.html"
+            linkUrl="./Forecast"
           />
           <Panel
-            imageUrl="/images/era5.png"
-            altText="Era5"
-            labelText="Era5"
-            linkUrl="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels"
+            imageUrl={imageUrls.dbz}
+            altText="dBz"
+            labelText="Radar dbz"
+            linkUrl="./Forecast"
           />
           <Panel
             imageUrl="https://www.mgm.gov.tr/FTPDATA/uzal/radar/comp/compppi15.jpg"
@@ -203,16 +214,19 @@ export default function Home() {
               title="Forecast"
               icon="routine"
               text="Check out our daily WRF model outputs for Turkey's weather. See the forecasted precipitation patterns and stay informed about the upcoming weather conditions."
+              linkUrl="/Forecast" 
             />
             <LinkCard
               title="Analysis"
               icon="science"
               text="Explore our visualizations of historical ERA5 analysis results. Check out the data on this page for insights into past weather patterns."
+              linkUrl="/Analysis"
             />
             <LinkCard
               title="Papers"
               icon="article"
               text="You can browse through the research articles we have published."
+              linkUrl="/Papers"
             />
           </div>
         </div>
