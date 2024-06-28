@@ -2,7 +2,7 @@ import React from "react";
 import "./components.css";
 import PDFIcon from "./PDF_file_icon.svg";
 
-export default function Card({ children, title, text, author, publishYear, publishJournal, doi, link}) {
+export default function Card({ children, title, text, author, publishYear, publishJournal, doi, link }) {
   return (
     <div className="card">
       <div className="left-column">

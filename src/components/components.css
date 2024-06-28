@@ -76,6 +76,63 @@ nav {
   padding-left: 1rem;
 }
 
+/* Media Queries */
 @media screen and (max-width: 1024px) {
-  
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    height: auto;
+    width: 100%;
+  }
+
+  .navbar-left {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .navbar-left img {
+    margin: 10px 0;
+    width: 70px;
+    height: auto;
+  }
+
+  .navbar-left .site-name {
+    margin-left: 2rem;
+    font-size: 1rem;
+  }
+
+  .navbar-right {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .navbar-right ul {
+    padding: 0;
+    text-align: center;
+  }
+
+  .navbar-right ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .card {
+    flex-direction: column;
+    margin: 1rem 2rem;
+  }
+
+  .card .left-column,
+  .card .right-column {
+    width: 100%;
+    padding: 1rem 0;
+    border: none;
+  }
+
+  .card .left-column {
+    border-bottom: 1px solid #000000;
+  }
+
+  .card .right-column {
+    padding-top: 1rem;
+  }
 }

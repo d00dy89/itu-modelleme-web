@@ -18,12 +18,18 @@
   height: 50vh;
 }
 
+@media screen and (max-width: 1024px) {
+  .home > header {
+    margin-top: 10rem;
+  }
+}
+
 .home > header h1 {
   position: absolute;
   bottom: 0rem;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 500;
   color: var(--lightA);
 }
@@ -44,16 +50,32 @@
 .home .quick-access-header {
   font-size: 1.5rem;
   margin-top: 1rem;
+  margin-bottom: 3rem;
   color: #333;
 }
 
 .home .panel-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   justify-content: center;
   align-items: center;
   justify-items: center;
+}
+
+/* Desktop view: 3x2 grid */
+@media (min-width: 1024px) {
+  .home .panel-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, auto); /* Adjust row height as needed */
+  }
+}
+
+/* Mobile view: 6x1 grid */
+@media (max-width: 1024px) {
+  .home .panel-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, auto); /* Adjust row height as needed */
+  }
 }
 
 .home .panel {
@@ -93,7 +115,7 @@
 
 .about > div {
   background-color: var(--lightA);
-  width: 100%;
+  width: 90%;
   max-width: 75rem;
   height: 45rem;
   padding: 1rem;
@@ -110,13 +132,42 @@
   padding: 0rem 1.5rem 0rem 1.5rem;
 }
 
-/* Join Us section */
+/* Mobile view */
+@media (max-width: 1024px) {
+  .home .about div p {
+    font-size: 1rem;
+  }
+}
+
+.view-page-link {
+  font-size: 2rem;
+  font-weight: 750;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.view-page-link:hover {
+  color: var(--lightB);
+}
+
 .home-card-container {
   display: flex;
   gap: 2rem;
   justify-content: center;
   padding: 2rem 0rem 0rem 4rem;
   width: 100%;
+}
+
+/* Mobile view */
+@media (max-width: 1024px) {
+  .home-card-container {
+      flex-direction: column;
+      padding: 1rem; /* Adjust padding for mobile view */
+      gap: 1rem; /* Reduce gap for mobile view */
+      padding: 2rem 1rem; /* Adjust padding for mobile view */
+  }
 }
 
 .link-card {
@@ -152,12 +203,28 @@
 }
 
 /* Join Us section */
-.join-us {
-  column-gap: 8rem;
-  display: flex;
-  justify-content: center;
-  margin-top: 5rem;
-  padding: 2rem;
+@media (min-width: 1024px) {
+  .join-us {
+    column-gap: 8rem;
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .join-us {
+    margin-top: 55rem;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .join-us-left, .join-us-right {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
 }
 
 .join-us div {
@@ -240,6 +307,32 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 10rem;
+}
+
+@media (max-width: 1024px) {
+  .forecast-page {
+    margin-top: 12rem;
+    width: 100%;
+    background-color: var(--lightB);
+    padding-top: 2rem;
+  }
+
+  .forecast-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .forecast-options-panel,
+  .forecast-image-container,
+  .forecast-domain-panel {
+    flex: 1 1 100%;
+    margin: 1rem 0;
+  }
+
+  .forecast-image-holder img {
+    height: auto;
+  }
 }
 
 .forecast-options-panel {
@@ -432,6 +525,31 @@
   line-height: 1.6rem;
 }
 
+/* Mobile view: */
+@media (max-width: 1024px) {
+  .analysis-page {
+    width: 100%;
+    background-color: var(--lightB);
+    padding-top: 2rem;
+    margin-top: 12rem;
+  }
+
+  .analysis-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .analysis-image-holder,
+  .analysis-date-selector {
+    width: 100%;
+    margin: 1rem 0;
+  }
+
+  .analysis-image-holder img {
+    height: auto; /* Adjust to maintain aspect ratio */
+  }
+}
+
 /* Papers section */
 .card {
   border: 0.15rem solid #333;
@@ -468,12 +586,19 @@
   height: auto;
 }
 
+@media (max-width: 1024px) {
+  .page:first-of-type{
+    margin-top: 12rem;
+  }
+}
+
 /* Footer section */
 .footer {
   background-color: #000;
   color: #fff;
   text-align: center;
-  height: 2rem;
+  height: 3rem;
+  width: 100%;
 }
 
 @media screen and (max-width: 1024px) {
