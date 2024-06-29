@@ -251,7 +251,7 @@ export default function Home() {
           Click this button if you're ready to soar into a world of innovation, teamwork, and meteorological mastery.
           Don’t let this opportunity evaporate—become a force of nature with us today!
           </p>
-          <a href="https://asd.com" className="join-button">
+          <a href="https://forms.gle/NEnRFTCczfJEXYu1A" className="join-button">
             Join Us
           </a>
         </div>
