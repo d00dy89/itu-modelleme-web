@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const graphTypes = {
   d01: [
@@ -39,15 +39,41 @@ const graphTypes = {
     { value: "tsk", label: "Skin Temperature" },
     { value: "vertical_v500", label: "500 hPa Vertical Velocity" },
     { value: "wind10", label: "10m Wind Speed" },
-  ]
+  ],
+  gfs: [
+    { value: "850hpaheights", label: "850 hPa Heights" },
+    { value: "pwat", label: "Precipitable Water" },
+    { value: "sfc_temp", label: "Surface Temperature" },
+    { value: "wind500", label: "500 hPa Wind Speed" },
+  ],
 };
 
-const generateImageLinks = (baseFolder, domain, range) => {
+const checkImageExists = async (url) => {
+  try {
+    const response = await fetch(url, { method: "HEAD" });
+    return response.ok;
+  } catch (error) {
+    console.error("Error checking image existence:", error);
+    return false;
+  }
+};
+
+const generateImageLinks = async (baseFolder, domain, range) => {
+  const folderPath = domain === "gfs" ? "gfs_output_maps" : "wrf_output_maps";
   const links = [];
   for (let i = 0; i <= range; i++) {
-    links.push(`/images/wrf_output_maps/${domain}/${baseFolder}/${baseFolder}_${i}.png`);
+    links.push(`/images/${folderPath}/${domain}/${baseFolder}/${baseFolder}_${i}.png`);
   }
   return links;
+};
+
+const loadImagesWithFallback = async (graphType, domain, range) => {
+  let imageLinks = await generateImageLinks(graphType, domain, range);
+  const exists = await checkImageExists(imageLinks[0]);
+  if (!exists) {
+    imageLinks = await generateImageLinks("t2m", domain, range);
+  }
+  return imageLinks;
 };
 
 export default function Forecast() {
@@ -55,12 +81,21 @@ export default function Forecast() {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [selectedDomain, setSelectedDomain] = useState("d01");
   const [range, setRange] = useState(24);
-  const [imageLinks, setImageLinks] = useState(generateImageLinks("t2m", "d01", 24));
+  const [imageLinks, setImageLinks] = useState([]);
   const [graphTypesState, setGraphTypes] = useState(graphTypes["d01"]);
 
-  const handleChangeGraph = (graphType) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const links = await loadImagesWithFallback("t2m", "d01", 24);
+      setImageLinks(links);
+    };
+    fetchData();
+  }, []);
+
+  const handleChangeGraph = async (graphType) => {
     setActiveGraph(graphType);
-    setImageLinks(generateImageLinks(graphType, selectedDomain, range));
+    const links = await loadImagesWithFallback(graphType, selectedDomain, range);
+    setImageLinks(links);
     setSelectedImageIndex(0);
   };
 
@@ -68,11 +103,12 @@ export default function Forecast() {
     setSelectedImageIndex(index);
   };
 
-  const handleChangeDomain = (domain) => {
-    const newRange = domain === "d01" ? 24 : 72;
+  const handleChangeDomain = async (domain) => {
+    const newRange = domain === "d01" ? 24 : domain === "d02" ? 72 : 80;
     setSelectedDomain(domain);
     setRange(newRange);
-    setImageLinks(generateImageLinks(activeGraph, domain, newRange));
+    const links = await loadImagesWithFallback(activeGraph, domain, newRange);
+    setImageLinks(links);
     setSelectedImageIndex(0);
     setGraphTypes([...graphTypes[domain]]); // Reset graph types with a new copy
   };
@@ -103,6 +139,7 @@ export default function Forecast() {
           </div>
         </div>
         <div className="forecast-domain-panel">
+          <button onClick={() => handleChangeDomain("gfs")}>GFS</button>
           <button onClick={() => handleChangeDomain("d01")}>WRF Domain 1</button>
           <button onClick={() => handleChangeDomain("d02")}>WRF Domain 2</button>
         </div>
