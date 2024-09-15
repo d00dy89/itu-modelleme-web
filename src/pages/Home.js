@@ -108,10 +108,10 @@ export default function Home() {
         }
       }
 
-      const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.png';
-      const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.png';
-      const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.png';
-      const dbzFilename = closest.dbz.substring(0, closest.dbz.lastIndexOf('_')) + '.png';
+      const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.jpg';
+      const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.jpg';
+      const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.jpg';
+      const dbzFilename = closest.dbz.substring(0, closest.dbz.lastIndexOf('_')) + '.jpg';
 
       return {
         temp2m: `/images/wrf_output_maps/d01/t2m/${temp2mFilename}`,
@@ -155,25 +155,25 @@ export default function Home() {
             imageUrl={imageUrls.temp2m}
             altText="2m Temperature"
             labelText="2m Temperature"
-            linkUrl="./Forecast"
+            linkUrl="/Forecast"
           />
           <Panel
             imageUrl={imageUrls.precip}
             altText="Precipitation"
             labelText="Precipitation"
-            linkUrl="./Forecast"
+            linkUrl="/Forecast"
           />
           <Panel
             imageUrl={imageUrls.wind10m}
             altText="10m Wind Speed"
             labelText="10m Wind Speed"
-            linkUrl="./Forecast"
+            linkUrl="/Forecast"
           />
           <Panel
             imageUrl={imageUrls.dbz}
             altText="dBz"
             labelText="Radar dbz"
-            linkUrl="./Forecast"
+            linkUrl="/Forecast"
           />
           <Panel
             imageUrl="https://www.mgm.gov.tr/FTPDATA/uzal/radar/comp/compppi15.jpg"

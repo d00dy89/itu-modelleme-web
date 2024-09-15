@@ -73,7 +73,7 @@ const generateImageLinks = async (baseFolder, domain, range) => {
   const folderPath = domain === "gfs" ? "gfs_output_maps" : "wrf_output_maps";
   const links = [];
   for (let i = 0; i <= range; i++) {
-    links.push(`/images/${folderPath}/${domain}/${baseFolder}/${baseFolder}_${i}.png`);
+    links.push(`/images/${folderPath}/${domain}/${baseFolder}/${baseFolder}_${i}.jpg`);
   }
   return links;
 };

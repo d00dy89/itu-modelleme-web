@@ -10,7 +10,7 @@ export default function Navbar() {
         <Link to="/">
           <img src={logo2} alt="Logo" />
         </Link>
-        <div className="site-name">ITU ATMOPSHERIC MODELLUNG TEAM</div>
+        <div className="site-name">ITU ATMOSPHERIC MODELLING TEAM</div>
       </div>
       <div className="navbar-right">
         <ul>
