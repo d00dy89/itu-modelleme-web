@@ -82,7 +82,7 @@ export default function Analysis() {
         <div className="analysis-date-selector">
           <label>Select Map Type:</label>
           <select value={selectedMapType} onChange={handleMapTypeChange}>
-            {["temperature", "snow", "precipitation", "wind10m", "height500hpa"].map((type) => (
+            {["avo_adv500", "combined300", "jet300", "rh700", "rvo300", "rvo500", "sst", "t2_depression", "t2m", "sst", "tempadv850", "temphgt850", "thickness", "tsk", "vertical_v500", "wind10" ].map((type) => (
               <option key={type} value={type}>{type}</option>
             ))}
           </select>
