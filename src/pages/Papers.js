@@ -7,7 +7,7 @@ export default function Papers() {
 
   return (
     <div className="page papers">
-      <h1>Papers</h1>
+      <h1>Research Articles</h1>
       <div className="card-wrapper">
         {papersData.map((paper, index) => (
           <Card

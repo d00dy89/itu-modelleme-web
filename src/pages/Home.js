@@ -68,21 +68,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    // const generateImageFilenames = () => {
-    //   const currentDateTime = new Date();
-    //   const todayInitTime = new Date();
-
-    //   if (currentDateTime.getHours() < 10) {
-    //     todayInitTime.setDate(todayInitTime.getDate() - 1);
-    //   }
-    //   todayInitTime.setUTCHours(0, 0, 0, 0);
-    const generateImageFilenames = () => {
-      const todayInitTime = new Date();
-      todayInitTime.setUTCHours(0, 0, 0, 0);
-
+    const generateImageFilenames = (todayInitTime) => {
       const filenames = [];
       for (let i = 0; i < 25; i++) {
-        const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000);
+        const time = new Date(todayInitTime.getTime() + i * 3 * 60 * 60 * 1000); // 3 saatlik dilimler
         const hours = time.getUTCHours().toString().padStart(2, '0');
         filenames.push({
           temp2m: `t2m_${i}_${time.toISOString().split('T')[0]}T${hours}0000Z.jpg`,
@@ -94,12 +83,12 @@ export default function Home() {
       }
       return filenames;
     };
-
+  
     const findClosestTimestamp = (initialTime, filenames) => {
       const initialTimeMs = new Date(initialTime).getTime();
       let closest = filenames[0];
       let minDiff = Math.abs(initialTimeMs - new Date(filenames[0].timestamp).getTime());
-    
+  
       for (let i = 1; i < filenames.length; i++) {
         const diff = Math.abs(initialTimeMs - new Date(filenames[i].timestamp).getTime());
         if (diff < minDiff) {
@@ -120,13 +109,26 @@ export default function Home() {
         dbz: `/images/wrf_output_maps/d01/dbz/${dbzFilename}`,
       };
     };
-
+  
     const initialTime = new Date();
-    const filenames = generateImageFilenames();
+    const currentHourUTC = initialTime.getUTCHours();
+    let todayInitTime = new Date();
+    
+    if (currentHourUTC < 10) {
+      // UTC 10'dan önce bir önceki günün zamanını ayarla
+      todayInitTime.setDate(todayInitTime.getDate() - 1);
+    }
+  
+    todayInitTime.setUTCHours(0, 0, 0, 0); // Günü sıfırla (UTC'de midnight)
+  
+    // Uygun isimleri oluştur ve en yakın zamanı bul
+    const filenames = generateImageFilenames(todayInitTime);
     const closestImageUrls = findClosestTimestamp(initialTime, filenames);
+  
+    // Durumu güncelle
     setImageUrls(closestImageUrls);
   }, []);
-
+  
   return (
     <div className="page home">
       <header style={{ backgroundImage: `url(${bg_image})` }}>
@@ -217,13 +219,13 @@ export default function Home() {
               linkUrl="/Forecast" 
             />
             <LinkCard
-              title="Analysis"
+              title="Era5-Analysis"
               icon="science"
               text="Explore our visualizations of historical ERA5 analysis results. Check out the data on this page for insights into past weather patterns."
               linkUrl="/Analysis"
             />
             <LinkCard
-              title="Papers"
+              title="R.Articles"
               icon="article"
               text="You can browse through the research articles we have published."
               linkUrl="/Papers"

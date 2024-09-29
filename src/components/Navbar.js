@@ -15,9 +15,9 @@ export default function Navbar() {
       <div className="navbar-right">
         <ul>
           <li><Link to="/">Home</Link></li>
-          <li><Link to="/Forecast">Forecast</Link></li>
-          <li><Link to="/Analysis">Analysis</Link></li>
-          <li><Link to="/Papers">Papers</Link></li>
+          <li><Link to="/Forecast">WRF-Forecast</Link></li>
+          <li><Link to="/Analysis">Era5-Analysis</Link></li>
+          <li><Link to="/Papers">R.Articles</Link></li>
         </ul>
       </div>
     </nav>
