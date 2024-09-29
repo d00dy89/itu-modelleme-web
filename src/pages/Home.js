@@ -96,12 +96,12 @@ export default function Home() {
           minDiff = diff;
         }
       }
-  
-      const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.png';
-      const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.png';
-      const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.png';
-      const dbzFilename = closest.dbz.substring(0, closest.dbz.lastIndexOf('_')) + '.png';
-  
+
+      const temp2mFilename = closest.temp2m.substring(0, closest.temp2m.lastIndexOf('_')) + '.jpg';
+      const precipFilename = closest.precip.substring(0, closest.precip.lastIndexOf('_')) + '.jpg';
+      const wind10mFilename = closest.wind10m.substring(0, closest.wind10m.lastIndexOf('_')) + '.jpg';
+      const dbzFilename = closest.dbz.substring(0, closest.dbz.lastIndexOf('_')) + '.jpg';
+
       return {
         temp2m: `/images/wrf_output_maps/d01/t2m/${temp2mFilename}`,
         precip: `/images/wrf_output_maps/d01/hourly_precip/${precipFilename}`,
